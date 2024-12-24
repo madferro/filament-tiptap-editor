@@ -53,6 +53,33 @@ export const CustomLink = Link.extend({
           }
         }
       },
+      linktype: {
+            default: '',
+            parseHTML: element => element.getAttribute('data-linktype'),
+            renderHTML: attributes => {
+            return {
+                'data-linktype': attributes.linktype,
+            }
+            }
+        },
+        internal: {
+            default: false,
+            parseHTML: element => element.getAttribute('data-internal'),
+            renderHTML: attributes => {
+            return {
+                'data-internal': attributes.internal,
+            }
+            }
+        },
+        resource: {
+            default: '',
+            parseHTML: element => element.getAttribute('data-resource'),
+            renderHTML: attributes => {
+            return {
+                'data-resource': attributes.resource,
+            }
+            }
+        },
     };
   },
 });
