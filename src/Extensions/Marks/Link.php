@@ -84,6 +84,71 @@ class Link extends BaseLink
                     ];
                 },
             ],
+            'linktype' => [
+                'default' => null,
+                'parseHTML' => function ($DOMNode) {
+                    if ($theme = $DOMNode->getAttribute('data-linktype')) {
+                        return $theme;
+                    }
+
+                    if ($theme = $DOMNode->getAttribute('linktype')) {
+                        return $theme;
+                    }
+
+                    return null;
+                },
+                'renderHTML' => function ($attributes) {
+                    if (! property_exists($attributes, 'linktype') || strlen($attributes->linktype ?? '') === 0) {
+                        return null;
+                    }
+
+                    return [
+                        'data-linktype' => $attributes->linktype,
+                    ];
+                },
+            ],
+            'resource' => [
+                'default' => null,
+                'parseHTML' => function ($DOMNode) {
+                    if ($theme = $DOMNode->getAttribute('data-resource')) {
+                        return $theme;
+                    }
+
+                    if ($theme = $DOMNode->getAttribute('resource')) {
+                        return $theme;
+                    }
+
+                    return null;
+                },
+                'renderHTML' => function ($attributes) {
+                    if (! property_exists($attributes, 'resource') || strlen($attributes->resource ?? '') === 0) {
+                        return null;
+                    }
+
+                    return [
+                        'data-resource' => $attributes->resource,
+                    ];
+                },
+            ],
+            'internal' => [
+                'default' => false,
+                'parseHTML' => function ($DOMNode) {
+                    if ($DOMNode->getAttribute('internal') === 'true') {
+                        return true;
+                    }
+
+                    return $DOMNode->getAttribute('data-internal') ?: null;
+                },
+                'renderHTML' => function ($attributes) {
+                    if (! property_exists($attributes, 'internal')) {
+                        return null;
+                    }
+
+                    return [
+                        'data-internal' => $attributes->internal ?? null,
+                    ];
+                },
+            ],
         ];
     }
 }
