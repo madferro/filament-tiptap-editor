@@ -64,11 +64,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/madferro/filament-tiptap-editor"
-        }
-    ]
+    "prefer-stable": true
 }
