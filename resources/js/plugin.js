@@ -56,7 +56,10 @@ import {
     StyleExtension,
     StatePath,
 } from "./extensions";
-import { lowlight } from "lowlight/lib/common";
+import {common, createLowlight} from 'lowlight'
+
+const lowlight = createLowlight(common)
+
 import { HexBase } from 'vanilla-colorful/lib/entrypoints/hex';
 import { isEqual } from "lodash";
 
