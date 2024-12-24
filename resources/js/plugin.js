@@ -522,6 +522,9 @@ export default function tiptap({
                     referrerpolicy: link.referrerpolicy ?? null,
                     as_button: link.as_button ?? null,
                     button_theme: link.button_theme ?? null,
+                    internal: link.internal ?? null,
+                    resource: link.resource ?? null,
+                    linktype: link.linktype ?? null,
                 })
                 .selectTextblockEnd()
                 .run();
