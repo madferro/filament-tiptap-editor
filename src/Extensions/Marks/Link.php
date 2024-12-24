@@ -15,7 +15,7 @@ class Link extends BaseLink
             'protocols' => [],
             'HTMLAttributes' => [],
             'validate' => 'undefined',
-            isAllowedUri: (url, ctx) => true
+            'isAllowedUri' => true
         ];
     }
 
