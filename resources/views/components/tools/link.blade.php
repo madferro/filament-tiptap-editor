@@ -27,6 +27,9 @@
                 as_button: link.as_button || null,
                 button_theme: link.button_theme || null,
                 coordinates: this.editor().view.state.selection.ranges,
+                internal: link.internal || false,
+                resource: link.resource || null,
+                linktype: link.linktype || null,
             };
 
             $wire.dispatchFormEvent('tiptap::setLinkContent', '{{ $statePath }}', arguments);
