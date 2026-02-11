@@ -113,6 +113,10 @@ class TiptapEditor extends Field
             return tiptap_converter()->asHTML($state);
         });
 
+        // TODO: In Filament 4, registerListeners() non esiste più
+        // I listeners vengono gestiti automaticamente tramite Livewire events
+        // Commentato temporaneamente - verificare se necessario ripristinare con nuovo sistema
+        /*
         $this->registerListeners([
             'tiptap::setGridBuilderContent' => [
                 fn (
@@ -164,6 +168,7 @@ class TiptapEditor extends Field
                 ) => $this->getCustomListener('updateBlock', $component, $statePath, $arguments),
             ],
         ]);
+        */
 
         $this->registerActions([
             SourceAction::make(),
