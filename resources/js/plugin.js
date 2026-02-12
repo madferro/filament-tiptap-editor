@@ -589,7 +589,7 @@ export default function tiptap({
         openBlockSettings(event) {
             if (event.detail.statePath !== this.statePath) return
 
-            this.$wire.mountFormComponentAction(this.statePath, "updateBlock", event.detail);
+            this.$wire.mountAction("updateBlock", event.detail, { schemaComponent: this.statePath });
         },
         updateBlock(event) {
             if (event.detail.statePath !== this.statePath) return

@@ -32,7 +32,7 @@
                 linktype: link.linktype || null,
             };
 
-            $wire.mountFormComponentAction('{{ $statePath }}', 'filament_tiptap_link', arguments);
+            $wire.mountAction('filament_tiptap_link', arguments, { schemaComponent: '{{ $statePath }}' });
         }
     }"
 />

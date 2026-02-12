@@ -52,10 +52,10 @@
                     x-on:unset-link.window="$event.detail.statePath === '{{ $statePath }}' ? unsetLink() : null"
                     x-on:update-editor-content.window="updateEditorContent($event)"
                     x-on:refresh-tiptap-editors.window="refreshEditorContent()"
-                    x-on:dragged-block.stop="$wire.mountFormComponentAction('{{ $statePath }}', 'insertBlock', {
+                    x-on:dragged-block.stop="$wire.mountAction('insertBlock', {
                         type: $event.detail.type,
                         coordinates: $event.detail.coordinates,
-                    })"
+                    }, { schemaComponent: '{{ $statePath }}' })"
                     x-on:dragged-merge-tag.stop="insertMergeTag($event)"
                     x-on:insert-block.window="insertBlock($event)"
                     x-on:update-block.window="updateBlock($event)"

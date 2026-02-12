@@ -10,9 +10,9 @@
 >
     @foreach($blocks as $key => $block)
         <x-filament-tiptap-editor::dropdown-button-item
-            action="$wire.mountFormComponentAction('{{ $statePath }}', 'insertBlock', {
+            action="$wire.mountAction('insertBlock', {
                 type: '{{ $key }}'
-            })"
+            }, { schemaComponent: '{{ $statePath }}' })"
         >
             {{ $block->getLabel() }}
         </x-filament-tiptap-editor::dropdown-button-item>

@@ -4,7 +4,7 @@
 ])
 
 @php
-    $action = "\$wire.mountFormComponentAction('" . $statePath . "', 'filament_tiptap_edit_media', arguments);";
+    $action = "\$wire.mountAction('filament_tiptap_edit_media', arguments, { schemaComponent: '" . $statePath . "' });";
 @endphp
 
 <x-filament-tiptap-editor::button

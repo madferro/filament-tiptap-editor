@@ -8,7 +8,7 @@
     icon="source"
     x-data="{
         openModal() {
-            $wire.mountFormComponentAction('{{ $statePath }}', 'filament_tiptap_source', { html: this.editor().getHTML() });
+            $wire.mountAction('filament_tiptap_source', { html: this.editor().getHTML() }, { schemaComponent: '{{ $statePath }}' });
         }
     }"
 />
