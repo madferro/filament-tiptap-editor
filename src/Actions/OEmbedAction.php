@@ -7,7 +7,7 @@ use Carbon\CarbonInterval;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\Group;
+use Filament\Schemas\Components\Group;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use FilamentTiptapEditor\TiptapEditor;
