@@ -1,6 +1,7 @@
 @props([
     'blocks' => [],
-    'statePath' => null
+    'statePath' => null,
+    'schemaKey' => null,
 ])
 
 <x-filament-tiptap-editor::dropdown-button
@@ -12,7 +13,7 @@
         <x-filament-tiptap-editor::dropdown-button-item
             action="$wire.mountAction('insertBlock', {
                 type: '{{ $key }}'
-            }, { schemaComponent: '{{ $statePath }}' })"
+            }, { schemaComponent: '{{ $schemaKey ?? $statePath }}' })"
         >
             {{ $block->getLabel() }}
         </x-filament-tiptap-editor::dropdown-button-item>

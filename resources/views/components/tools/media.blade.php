@@ -1,11 +1,12 @@
 @props([
     'statePath' => null,
+    'schemaKey' => null,
     'icon' => 'media',
 ])
 
 @php
     if (str(config('filament-tiptap-editor.media_action'))->contains('\\')) {
-        $action = "\$wire.mountAction('filament_tiptap_media', arguments, { schemaComponent: '" . $statePath . "' });";
+        $action = "\$wire.mountAction('filament_tiptap_media', arguments, { schemaComponent: '" . ($schemaKey ?? $statePath) . "' });";
     } else {
         $action = "this.\$dispatch('open-modal', {id: '" . config('filament-tiptap-editor.media_action') . "', statePath: '" . $statePath . "'}, arguments)";
     }

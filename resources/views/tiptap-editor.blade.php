@@ -3,6 +3,7 @@
     $bubbleMenuTools = $getBubbleMenuTools();
     $floatingMenuTools = $getFloatingMenuTools();
     $statePath = $getStatePath();
+    $key = $getKey();
     $isDisabled = $isDisabled();
     $blocks = $getBlocks();
     $mergeTags = $getMergeTags();
@@ -37,6 +38,7 @@
                     x-data="tiptap({
                         state: $wire.{{ $applyStateBindingModifiers("entangle('{$statePath}')", isOptimisticallyLive: true) }},
                         statePath: '{{ $statePath }}',
+                        schemaKey: '{{ $key }}',
                         tools: @js($tools),
                         disabled: @js($isDisabled),
                         locale: '{{ app()->getLocale() }}',
@@ -55,7 +57,7 @@
                     x-on:dragged-block.stop="$wire.mountAction('insertBlock', {
                         type: $event.detail.type,
                         coordinates: $event.detail.coordinates,
-                    }, { schemaComponent: '{{ $statePath }}' })"
+                    }, { schemaComponent: '{{ $key }}' })"
                     x-on:dragged-merge-tag.stop="insertMergeTag($event)"
                     x-on:insert-block.window="insertBlock($event)"
                     x-on:update-block.window="updateBlock($event)"
@@ -72,7 +74,7 @@
                                 <div class="tiptap-toolbar text-gray-800 border-b border-gray-950/10 bg-gray-50 divide-x divide-gray-950/10 rounded-t-md z-[1] relative flex flex-col md:flex-row dark:text-gray-300 dark:border-white/20 dark:bg-gray-950 dark:divide-white/20">
 
                                     <div class="flex flex-wrap items-center flex-1 gap-1 p-1 tiptap-toolbar-left">
-                                        <x-dynamic-component component="filament-tiptap-editor::tools.paragraph" :state-path="$statePath" />
+                                        <x-dynamic-component component="filament-tiptap-editor::tools.paragraph" :state-path="$statePath" :schema-key="$key" />
                                         @foreach ($tools as $tool)
                                             @if ($tool === '|')
                                                 <div class="border-l border-gray-950/10 dark:border-white/20 h-5"></div>
@@ -80,14 +82,14 @@
                                                 <div class="border-t border-gray-950/10 dark:border-white/20 w-full"></div>
                                             @elseif (is_array($tool))
                                                 @if(array_key_exists('button', $tool) && !is_null($tool['button']))
-                                                <x-dynamic-component component="{{ $tool['button'] }}" :state-path="$statePath" />
+                                                <x-dynamic-component component="{{ $tool['button'] }}" :state-path="$statePath" :schema-key="$key" />
                                                 @endif
                                             @elseif ($tool === 'blocks')
                                                 @if ($blocks && $shouldSupportBlocks)
-                                                    <x-filament-tiptap-editor::tools.blocks :blocks="$blocks" :state-path="$statePath" />
+                                                    <x-filament-tiptap-editor::tools.blocks :blocks="$blocks" :state-path="$statePath" :schema-key="$key" />
                                                 @endif
                                             @else
-                                                <x-dynamic-component component="filament-tiptap-editor::tools.{{ $tool }}" :state-path="$statePath" :editor="$field" />
+                                                <x-dynamic-component component="filament-tiptap-editor::tools.{{ $tool }}" :state-path="$statePath" :schema-key="$key" :editor="$field" />
                                             @endif
                                         @endforeach
                                     </div>

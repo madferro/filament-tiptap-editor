@@ -1,5 +1,6 @@
 @props([
     'statePath' => null,
+    'schemaKey' => null,
 ])
 
 <x-filament-tiptap-editor::button
@@ -8,7 +9,7 @@
     icon="source"
     x-data="{
         openModal() {
-            $wire.mountAction('filament_tiptap_source', { html: this.editor().getHTML() }, { schemaComponent: '{{ $statePath }}' });
+            $wire.mountAction('filament_tiptap_source', { html: this.editor().getHTML() }, { schemaComponent: '{{ $schemaKey ?? $statePath }}' });
         }
     }"
 />

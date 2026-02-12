@@ -1,10 +1,11 @@
 @props([
     'statePath' => null,
+    'schemaKey' => null,
     'icon' => 'media',
 ])
 
 @php
-    $action = "\$wire.mountAction('filament_tiptap_edit_media', arguments, { schemaComponent: '" . $statePath . "' });";
+    $action = "\$wire.mountAction('filament_tiptap_edit_media', arguments, { schemaComponent: '" . ($schemaKey ?? $statePath) . "' });";
 @endphp
 
 <x-filament-tiptap-editor::button
