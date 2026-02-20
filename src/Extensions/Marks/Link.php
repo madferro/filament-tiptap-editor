@@ -3,6 +3,7 @@
 namespace FilamentTiptapEditor\Extensions\Marks;
 
 use Tiptap\Marks\Link as BaseLink;
+use Tiptap\Utils\HTML;
 
 class Link extends BaseLink
 {
@@ -15,7 +16,25 @@ class Link extends BaseLink
             'protocols' => [],
             'HTMLAttributes' => [],
             'validate' => 'undefined',
-            'isAllowedUri' => true
+        ];
+    }
+
+    public function renderHTML($mark, $HTMLAttributes = [])
+    {
+        $attributes = HTML::mergeAttributes($this->options['HTMLAttributes'] ?? [], $HTMLAttributes);
+
+        if (isset($mark->attrs)) {
+            foreach ((array) $mark->attrs as $key => $value) {
+                if ($value === null) {
+                    unset($attributes[$key]);
+                }
+            }
+        }
+
+        return [
+            'a',
+            $attributes,
+            0,
         ];
     }
 
