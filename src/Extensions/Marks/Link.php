@@ -9,14 +9,14 @@ class Link extends BaseLink
 {
     public function addOptions(): array
     {
-        return [
+        return array_merge(parent::addOptions(), [
             'openOnClick' => true,
             'linkOnPaste' => true,
             'autoLink' => true,
             'protocols' => [],
             'HTMLAttributes' => [],
             'validate' => 'undefined',
-        ];
+        ]);
     }
 
     public function renderHTML($mark, $HTMLAttributes = [])
